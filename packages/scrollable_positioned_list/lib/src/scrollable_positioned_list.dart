@@ -392,6 +392,9 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
       widget.itemScrollController?._detach();
       widget.itemScrollController?._attach(this);
     }
+    print('ScrollabelPositionedList old itemCount : ${oldWidget.itemCount}');
+    print('ScrollabelPositionedList itemCount : ${widget.itemCount}');
+    print('ScrollabelPositionedList primaryTarget ${primary.target}');
 
     if (widget.itemCount == 0) {
       setState(() {
@@ -410,6 +413,7 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
         });
       }
     }
+    print('ScrollabelPositionedList primaryTarget ${primary.target}');
   
   /// Check does user enabled keepPositionWithoutScroll
     /// ScrollablePositionedList.separated will set double itemChild.
