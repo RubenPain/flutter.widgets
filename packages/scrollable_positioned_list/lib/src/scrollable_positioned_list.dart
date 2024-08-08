@@ -417,7 +417,7 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
 
     if(widget.itemCount > oldWidget.itemCount && primary.target <=1){
       setState((){
-        primary.target = widget.itemCount - oldWidget.itemCount;
+        primary.target = widget.itemCount - oldWidget.itemCount +1;
       });
     }
     print('ScrollabelPositionedList primaryTarget ${primary.target}');
