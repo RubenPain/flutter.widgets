@@ -414,6 +414,13 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
       }
     }
     print('ScrollabelPositionedList primaryTarget ${primary.target}');
+
+    if(widget.itemCount > oldWidget.itemCount && primary.target <=1){
+      setState((){
+        primary.target = widget.itemCount - oldWidget.itemCount;
+      });
+    }
+    print('ScrollabelPositionedList primaryTarget ${primary.target}');
   
   /// Check does user enabled keepPositionWithoutScroll
     /// ScrollablePositionedList.separated will set double itemChild.
@@ -425,7 +432,7 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
       if (_lastTargetKey != null) {
         var currTargetIndex = _getIndexOfKey();
         if (currTargetIndex != null && currTargetIndex > primary.target) {
-          setState(() {primary.target = currTargetIndex;});
+          primary.target = currTargetIndex;
         }
       }
     }
