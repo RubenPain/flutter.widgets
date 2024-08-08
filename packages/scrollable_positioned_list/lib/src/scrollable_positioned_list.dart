@@ -306,9 +306,9 @@ class ScrollOffsetController {
 
   void _attach(_ScrollablePositionedListState scrollableListState) {
     assert(_scrollableListState == null);
-    double previousOffset = _scrollableListState.previousOffset;
+    double previousOffset = _scrollableListState?.previousOffset ?? 0;
     _scrollableListState = scrollableListState;
-    _scrollableListState.previousOffset = previousOffset;
+    _scrollableListState?.previousOffset = previousOffset;
   }
 
   void _detach() {
