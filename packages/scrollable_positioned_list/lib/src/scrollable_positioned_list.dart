@@ -306,7 +306,9 @@ class ScrollOffsetController {
 
   void _attach(_ScrollablePositionedListState scrollableListState) {
     assert(_scrollableListState == null);
+    double previousOffset = _scrollableListState.previousOffset;
     _scrollableListState = scrollableListState;
+    _scrollableListState.previousOffset = previousOffset;
   }
 
   void _detach() {
@@ -414,13 +416,6 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
       }
     }
     print('ScrollabelPositionedList primaryTarget ${primary.target}');
-
-    if(widget.itemCount > oldWidget.itemCount && primary.target <=1){
-      setState((){
-        primary.target = widget.itemCount - oldWidget.itemCount +1;
-      });
-    }
-    print('ScrollabelPositionedList primaryTarget ${primary.target}');
   
   /// Check does user enabled keepPositionWithoutScroll
     /// ScrollablePositionedList.separated will set double itemChild.
@@ -460,6 +455,7 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
     } else {
       _lastTargetKey = null;
     }
+    print('ScrollabelPositionedList rebuild ${primary.target}');
     return LayoutBuilder(
       builder: (context, constraints) {
         final cacheExtent = _cacheExtent(constraints);
