@@ -306,9 +306,7 @@ class ScrollOffsetController {
 
   void _attach(_ScrollablePositionedListState scrollableListState) {
     assert(_scrollableListState == null);
-    double previousOffset = _scrollableListState?.previousOffset ?? 0;
     _scrollableListState = scrollableListState;
-    _scrollableListState?.previousOffset = previousOffset;
   }
 
   void _detach() {
@@ -416,6 +414,12 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
       }
     }
     print('ScrollabelPositionedList primaryTarget ${primary.target}');
+    if(widget.itemCount > oldWidget.itemCount && primary.target <=1){
+      setState((){
+        primary.target = widget.itemCount - oldWidget.itemCount - 1;
+        primary.alignment = oldWidget.scrollOffsetController._scrollableListState.primary.alignment;
+      });
+    }
   
   /// Check does user enabled keepPositionWithoutScroll
     /// ScrollablePositionedList.separated will set double itemChild.
