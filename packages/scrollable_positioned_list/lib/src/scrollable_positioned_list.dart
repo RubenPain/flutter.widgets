@@ -414,12 +414,15 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
       }
     }
     print('ScrollabelPositionedList primaryTarget ${primary.target}');
+    print('ScrollabelPositionedList primaryAlignment ${primary.alignment}');
     if(widget.itemCount > oldWidget.itemCount && primary.target <=1){
       setState((){
-        primary.target = widget.itemCount - oldWidget.itemCount - 1;
+        primary.target = widget.itemCount - oldWidget.itemCount + 1;
         primary.alignment = oldWidget.scrollOffsetController?._scrollableListState?.primary.alignment ?? widget.initialAlignment;
       });
     }
+    print('ScrollabelPositionedList widget.alignment ${widget.initialAlignment}');
+    print('ScrollabelPositionedList primaryAlignment ${primary.alignment}');
   
   /// Check does user enabled keepPositionWithoutScroll
     /// ScrollablePositionedList.separated will set double itemChild.
