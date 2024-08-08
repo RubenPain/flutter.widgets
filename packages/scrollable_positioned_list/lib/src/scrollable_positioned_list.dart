@@ -421,7 +421,7 @@ class _ScrollablePositionedListState extends State<ScrollablePositionedList>
       if (_lastTargetKey != null) {
         var currTargetIndex = _getIndexOfKey();
         if (currTargetIndex != null && currTargetIndex > primary.target) {
-          primary.target = currTargetIndex;
+          setState(() {primary.target = currTargetIndex;});
         }
       }
     }
